@@ -1,4 +1,5 @@
 package basicAlgorithms;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,31 +16,40 @@ public class TwoPointerAlgorithm {
 		}
 		
 		Arrays.sort(a);
+		
+		ArrayList<Integer> res = new ArrayList<>();
 //		if(twopointfunc(a,0,x)==1) {
 //			System.out.println("pair found");
 //		}else
 //			System.out.println("no pair found");	
 		
 		for(int i=0;i<n-1;i++) {
-			if(twopointfunc(a,i+1,a[i])==1) 
-				{System.out.println("triplet found");
-				break;}
-			System.out.println(" no triplet found");
+			
+				res = twopointfunc(a,i+1,a[i]);
+				System.out.println(res);
 		}
+		
 	}
 	
-	static int twopointfunc(int[] a,int i, int x) {
+	static ArrayList<Integer> twopointfunc(int[] a,int i, int x) {
 		
 		int j=a.length-1;
 		
 		while(i<j) {
 			if(a[i]+a[j]==-x)
-				return 1;
+			{
+				ArrayList<Integer> lst = new ArrayList<>();
+				lst.add(a[i]);
+				lst.add(a[j]);
+				lst.add(x);
+				return lst;
+			}
+				
 			else if(a[i]+a[j]>-x)
 				j--;
 			else
 				i++;
-		}return 0;
+		}return null;
 	}
 
 }

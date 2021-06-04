@@ -13,21 +13,22 @@ public class MyLinkedList {
 	}
 	
 	
-	Node head;
+	static Node head;
 	int size;
 	
-	void add(int item) {
+	Node add(int item) {
 		Node toAdd = new Node(item);
 		Node temp = head;
 		if(head==null) {
 			head = toAdd;
 			size++;
-			return;
+			return head;
 		}
 		while(temp.next!=null) {
 			temp = temp.next;
 		}temp.next = toAdd;
 		size++;
+		return head;
 	}
 	
 	void print() {
